@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Use this script to install OS dependencies, downloading and compile arkime dependencies, compile arkime capture, optionally install
 #
 # SPDX-License-Identifier: Apache-2.0
@@ -256,7 +256,7 @@ if [ "$UNAME" = "Darwin" ]; then
 fi
 
 if [ "$UNAME" = "FreeBSD" ]; then
-  sudo pkg install -y gcc wget curl pcre flex bison gettext e2fsprogs-libuuid glib gmake yara lua53 librdkafka pkgconf node20 npm-node20 libyaml autotools libmaxminddb
+  sudo pkg install -y gcc wget curl pcre flex bison gettext libuuid glib gmake yara lua53 librdkafka pkgconf node20 npm-node20 libyaml autotools libmaxminddb libinotify
   MAKE=gmake
   DOTHIRDPARTY=0
   DOKAFKA=1

@@ -14,11 +14,11 @@ if [ -d "/etc/systemd" ] && [ -x "/bin/systemctl" ]; then
     /bin/unlink /etc/systemd/system/arkimeviewer.service >/dev/null 2>&1
     /bin/unlink /etc/systemd/system/arkimewise.service >/dev/null 2>&1
 
-    /bin/cp -f @prefix@/etc/arkimecapture.systemd.service /etc/systemd/system/arkimecapture.service
-    /bin/cp -f @prefix@/etc/arkimecont3xt.systemd.service /etc/systemd/system/arkimecont3xt.service
-    /bin/cp -f @prefix@/etc/arkimeparliament.systemd.service /etc/systemd/system/arkimeparliament.service
-    /bin/cp -f @prefix@/etc/arkimeviewer.systemd.service /etc/systemd/system/arkimeviewer.service
-    /bin/cp -f @prefix@/etc/arkimewise.systemd.service /etc/systemd/system/arkimewise.service
+    /bin/cp -f /opt/arkime/etc/arkimecapture.systemd.service /etc/systemd/system/arkimecapture.service
+    /bin/cp -f /opt/arkime/etc/arkimecont3xt.systemd.service /etc/systemd/system/arkimecont3xt.service
+    /bin/cp -f /opt/arkime/etc/arkimeparliament.systemd.service /etc/systemd/system/arkimeparliament.service
+    /bin/cp -f /opt/arkime/etc/arkimeviewer.systemd.service /etc/systemd/system/arkimeviewer.service
+    /bin/cp -f /opt/arkime/etc/arkimewise.systemd.service /etc/systemd/system/arkimewise.service
     /usr/bin/systemctl daemon-reload
     echo "Arkime systemd files copied"
 fi
@@ -27,11 +27,11 @@ fi
 if [ -d "/etc/logrotate.d" ] && [ ! -f "/etc/logrotate.d/$name" ]; then
     echo "Installing logrotate /etc/logrotate.d/$name to delete files after 14 days"
     cat << EOF > "/etc/logrotate.d/$name"
-@prefix@/logs/capture.log
-@prefix@/logs/viewer.log
-@prefix@/logs/wise.log
-@prefix@/logs/cont3xt.log
-@prefix@/logs/parliament.log {
+/opt/arkime/logs/capture.log
+/opt/arkime/logs/viewer.log
+/opt/arkime/logs/wise.log
+/opt/arkime/logs/cont3xt.log
+/opt/arkime/logs/parliament.log {
     daily
     rotate 14
     notifempty
@@ -44,4 +44,4 @@ else
 fi
 
 ################################################################################
-echo "READ @prefix@/README.txt and RUN @prefix@/bin/Configure"
+echo "READ /opt/arkime/README.txt and RUN /opt/arkime/bin/Configure"
